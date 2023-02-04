@@ -16,20 +16,21 @@ $("#sendMail").on("click", function () {
   $("errorMess").text("");
 
   $.ajax({
-    type: "POST",
-    url: "js/mail.php",
+    url: 'ajax/mail.php',
+    type: 'GET',
     cache: false,
-    data: { name: name, phone: phone, message: message },
-    dataType: "html",
+    data: { 'name': name, 'phone': phone, 'message': message },
+    dataType: 'html',
     beforeSend: function () {
-      $("#sendEmail").prop("disabled", true);
+      $("#sendMail").prop("disabled", true);
     },
     success: function (data) {
+     
         if(!data)
-      alert('error,the message has not been sent');
+      alert("error,the message has not been sent");
       else
-      $("#form").trigger('reset');
-      $("#sendEmail").prop("disabled", false);
+      $("#form").trigger("reset");
+      $("#sendMail").prop("disabled", false);
     },
   });
 });
